@@ -1,0 +1,17 @@
+<script type="text/template" id="cd-tmpl">
+<% var addHeader = true;
+_.each(cds, function(cd) { 
+    if ( Modernizr.mq( "only all and (max-width: 640px)" ) ) {
+        addHeader = true;
+    }
+    %>
+	<div class="row cd">
+		<div class="col"><% if ( addHeader ) { %><div class="head">Id</div><% } %><div class="data"><%=cd.id%></div></div>
+		<div class="col"><% if ( addHeader ) { %><div class="head">Title</div><% } %><div class="data"><%=cd.title%></div></div>
+		<div class="col"><% if ( addHeader ) { %><div class="head">Artist</div><% } %><div class="data"><%=cd.artist%></div></div>
+		<div class="col"><% if ( addHeader ) { %><div class="head">Number of tracks</div><% } %><div class="data"><%=cd.trackTitles.length%></div></div>
+		<div class="col"><% if ( addHeader ) { %><div class="head">REST URL</div><% } %><div class="data"><a href="rest/cds/<%=cd.id%>" rel="external" target="_blank" class="resturl ui-link">JSON</a></div></div>
+	</div>
+<% addHeader = false;
+}); %>
+</script>
